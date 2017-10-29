@@ -13,6 +13,8 @@ Plug 'tpope/vim-repeat'
 Plug 'w0rp/ale'
 Plug 'kassio/neoterm'
 Plug 'ctrlpvim/ctrlp.vim'
+Plug '907th/vim-auto-save'
+Plug 'jpalardy/vim-slime'
 "Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 "Plug 'zchee/deoplete-clang'
 Plug 'AJua/summerfruit256.vim'
@@ -83,6 +85,20 @@ let g:deoplete#enable_at_startup = 1
 " execute `mdfind -name libclang.dylib` within bash on mac to find the location
 let g:deoplete#sources#clang#libclang_path = "/usr/local/Cellar/llvm/5.0.0/lib/libclang.dylib"
 let g:deoplete#sources#clang#clang_header = "/usr/local/Cellar/llvm/5.0.0/lib/clang"
+
+" vim-ale
+let g:ale_fixers = { 'python': ['autopep8'], }
+let g:ale_fix_on_save = 1
+
+" vim-autosave
+let g:auto_save = 1 " AutoSave is disabled by default, this will enable AutoSave onVim startup
+let g:auto_save_no_updatetime = 1
+
+" vim-slime
+let g:slime_target = "tmux"
+let g:slime_paste_file = "$HOME/.slime_paste"
+let g:slime_default_config = {"socket_name": "default", "target_pane": "1"}
+let g:slime_dont_ask_default = 1
 
 " json beautifier
 nnoremap <Leader>j :%!python -m json.tool<CR>
