@@ -13,6 +13,8 @@ Plug 'tpope/vim-repeat'
 Plug 'w0rp/ale'
 Plug 'kassio/neoterm'
 Plug 'ctrlpvim/ctrlp.vim'
+"Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+"Plug 'zchee/deoplete-clang'
 Plug 'AJua/summerfruit256.vim'
 
 " Initialize plugin system
@@ -27,9 +29,9 @@ let mapleader = ","
 
 set modelines=0
 
-set tabstop=2
-set shiftwidth=2
-set softtabstop=2
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
 set expandtab
 
 " Use system default setting to display chinese
@@ -74,6 +76,13 @@ let xml_syntax_folding=1      " XML
 
 nnoremap <leader>n :NERDTree %:p:h<CR> 
 nnoremap <leader>a :Ack 
+" Use deoplete.
+let g:deoplete#enable_at_startup = 1
+
+" let Plug 'zchee/deoplete-clang' work correcly
+" execute `mdfind -name libclang.dylib` within bash on mac to find the location
+let g:deoplete#sources#clang#libclang_path = "/usr/local/Cellar/llvm/5.0.0/lib/libclang.dylib"
+let g:deoplete#sources#clang#clang_header = "/usr/local/Cellar/llvm/5.0.0/lib/clang"
 
 " json beautifier
 nnoremap <Leader>j :%!python -m json.tool<CR>
