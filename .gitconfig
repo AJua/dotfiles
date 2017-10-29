@@ -1,0 +1,10 @@
+[user]
+  name = AJua
+  email = ljredracess@gmail.com
+[core]
+  excludesfile = ~/.gitignore_global
+[alias]
+  co = checkout
+  br = branch
+  cm = commit -m 
+  ss = status
