@@ -135,8 +135,23 @@ nnoremap <leader>l :set list!<CR>
 
 " personal hotkey preference
 inoremap jj <ESC>
+inoremap {<CR> {<CR>}<ESC>O<TAB>
+inoremap (( ()<LEFT>
+inoremap {{ {}<LEFT>
+inoremap [[ []<LEFT>
+inoremap '' ''<LEFT>
+inoremap "" ""<LEFT>
+
 nnoremap ; :
 vnoremap ; :
+nnoremap / /\v
+vnoremap / /\v
+nnoremap <tab> %
+vnoremap <tab> %
+nnoremap <CR> o<Esc>
+
+" shortcut to ack
+nnoremap <leader>a :Ack 
 
 colorscheme summerfruit256
 
@@ -144,6 +159,6 @@ colorscheme summerfruit256
 au FocusLost * :wa
 
 " fix syntax on not working correctly after call vim-plug
-au Bufenter * syntax on
+au BufReadPre * syntax on
 
 set clipboard=unnamedplus
