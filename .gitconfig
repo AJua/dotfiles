@@ -1,6 +1,5 @@
 [user]
   name = AJua
-  email = ljredracess@gmail.com
 [core]
   excludesfile = ~/.gitignore_global
 [alias]
