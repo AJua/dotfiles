@@ -143,7 +143,6 @@ nnoremap <down> :resize +3<cr>
 
 " compile with clang and execute
 nnoremap <F9> :T cc % -o %:r && ./%:r<CR>
-
 nnoremap <F10> :T pandoc -t beamer % -o %:r.pdf --latex-engine=xelatex -V CJKmainfont=Songti\ TC\ Regular<CR>
 
 " show/hide \'s symbol
@@ -168,12 +167,14 @@ nnoremap <CR> o<Esc>
 
 " shortcut to ack
 nnoremap <leader>a :Ack 
+nnoremap <leader>, :%s/，/, /<CR>
 
 colorscheme summerfruit256
 
 if has("gui_running")
-    set guifont=Inconsolata:h14.4:cANSI:qDRAFT
-	set lines=53 columns=120 linespace=0
+    "set guifont=Inconsolata:h14.4:cANSI:qDRAFT
+    set guifont=ProFontWindows:h17:cANSI:qDRAFT
+	set lines=53 columns=122 linespace=0
 endif
 
 " auto save
