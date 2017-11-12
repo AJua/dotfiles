@@ -5,12 +5,15 @@ set nocompatible
 " - Avoid using standard Vim directory names like 'plugin'
 call plug#begin('~/.local/share/nvim/plugged')
 
+if has("nvim")
+    Plug 'w0rp/ale'
+endif
+
 " Make sure you use single quotes
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
-Plug 'w0rp/ale'
 Plug 'kassio/neoterm'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug '907th/vim-auto-save'
@@ -18,6 +21,8 @@ Plug 'jpalardy/vim-slime'
 "Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 "Plug 'zchee/deoplete-clang'
 Plug 'AJua/summerfruit256.vim'
+Plug 'altercation/vim-colors-solarized'
+Plug 'nightsense/simplifysimplify'
 
 " Initialize plugin system
 call plug#end()
@@ -106,14 +111,18 @@ nnoremap <Leader>j :%!python -m json.tool<CR>
 " hide search highlight
 nnoremap <leader><space> :noh<CR>
 
-" exit terminal mode
-tnoremap <Esc> <C-\><C-n>
+if has ("nvim")
+    " exit terminal mode
+    tnoremap <Esc> <C-\><C-n>
+
+    " switch between splitted window
+    tnoremap <C-h> <C-\><C-n><C-w>h
+    tnoremap <C-j> <C-\><C-n><C-w>j
+    tnoremap <C-k> <C-\><C-n><C-w>k
+    tnoremap <C-l> <C-\><C-n><C-w>l
+endif
 
 " switch between splitted window
-tnoremap <C-h> <C-\><C-n><C-w>h
-tnoremap <C-j> <C-\><C-n><C-w>j
-tnoremap <C-k> <C-\><C-n><C-w>k
-tnoremap <C-l> <C-\><C-n><C-w>l
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
@@ -154,6 +163,10 @@ nnoremap <CR> o<Esc>
 nnoremap <leader>a :Ack 
 
 colorscheme summerfruit256
+
+if has("gui_running")
+    set guifont=Inconsolata \Medium\ 16
+endif
 
 " auto save
 au FocusLost * :wa
