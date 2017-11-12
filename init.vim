@@ -42,7 +42,7 @@ set softtabstop=4
 set expandtab
 
 " Use system default setting to display chinese
-"set encoding=utf-8
+set encoding=utf-8
 set scrolloff=3
 set autoindent
 set showmode
@@ -67,7 +67,9 @@ set hlsearch
 set wrap
 set textwidth=79
 set formatoptions=qrn1
-set listchars=tab:▸\ ,eol:¬
+if has("nvim")
+    set listchars=tab:▸\ ,eol:¬
+endif
 
 set foldmethod=syntax
 set foldlevelstart=3
@@ -165,7 +167,8 @@ nnoremap <leader>a :Ack
 colorscheme summerfruit256
 
 if has("gui_running")
-    set guifont=Inconsolata \Medium\ 16
+    set guifont=Inconsolata:h14.4:cANSI:qDRAFT
+	set lines=53 columns=120 linespace=0
 endif
 
 " auto save
