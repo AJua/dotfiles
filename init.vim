@@ -23,6 +23,8 @@ Plug 'jpalardy/vim-slime'
 Plug 'AJua/summerfruit256.vim'
 Plug 'altercation/vim-colors-solarized'
 Plug 'nightsense/simplifysimplify'
+Plug 'rstacruz/sparkup', {'rtp': 'vim/'}
+Plug 'jaxbot/browserlink.vim'
 
 " Initialize plugin system
 call plug#end()
@@ -107,6 +109,9 @@ let g:slime_paste_file = "$HOME/.slime_paste"
 let g:slime_default_config = {"socket_name": "default", "target_pane": "1"}
 let g:slime_dont_ask_default = 1
 
+" browserlink
+let g:bl_pagefiletype = ['html', 'javascript', 'php', 'markdown']
+
 " json beautifier
 nnoremap <Leader>j :%!python -m json.tool<CR>
 
@@ -177,4 +182,8 @@ au FocusLost * :wa
 " fix syntax on not working correctly after call vim-plug
 au BufReadPre * syntax on
 
-set clipboard=unnamedplus
+if has('gui_win32')
+    set clipboard=unnamed
+else
+    set clipboard=unnamedplus
+endif
