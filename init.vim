@@ -10,6 +10,7 @@ if has("nvim")
 endif
 
 " Make sure you use single quotes
+Plug 'AJua/todo.txt-vim'
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-surround'
@@ -183,7 +184,7 @@ au FocusLost * :wa
 " fix syntax on not working correctly after call vim-plug
 au BufReadPre * syntax on
 
-if has('gui_win32')
+if has('win32')
     set clipboard=unnamed
 else
     set clipboard=unnamedplus
