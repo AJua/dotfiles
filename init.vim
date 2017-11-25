@@ -86,6 +86,8 @@ let sh_fold_enabled=1         " sh
 let vimsyn_folding='af'       " Vim script
 let xml_syntax_folding=1      " XML
 
+let NERDTreeIgnore=['png', 'build','sound','images','Assets','aspnet_client','min.js','min.css','.map','.suo','.user','.userosscache','.sln.docstates.userprefsebug','debug','release','releases','x64','x86','.dll','DLL','[Bb]in','TestResult','dlldata.cproject.lock.json','artifacts_i.c','_p.c','_i.h','.ilk','.meta','obj','.pch','.pdb','.pgc','.pgd','.rsp','.sbr','.tlb','.tli','.tlh','.tmp','.tmp_proj','.vspscc','.vssscc','.builds','.pidb','.svclog','.scc_Chutzpahipch','.aps','.ncb','.opendb','.opensdf','.sdf','.cachefile','.VC.db','.VC.opendb.psess','.vsp','.vspx','.reharper','.DotSettings.user.JustCode_TeamCity.dotCover_NCrunch_','.crunch.local.xml','nCrunchTemp_.mm.','AutoTest.Net.sass-cachexpressDocProjectbuildhelp','DocProjectHelp.HxT','DocProjectHelp.HxC','DocProjectHelp.hhc','DocProjectHelp.hhk','DocProjectHelp.hhp','DocProjectHelpHtml2','DocProjectHelphtmlpublish.ublish.xml','.azurePubxml','.pubxml','.publishprojPublishScripts.nupkg','packages','packagesbuild','.nuget.props','.nuget.targetscsx','.build.csdefecf','rcfAppPackages','BundleArtifacts','Package.StoreAssociation.xml','_pkginfo.txt.ache','.acheClientBin','.dbmdl','.dbproj.schemaview','.pfx','.publishsettings','node_modules','orleans.codegen.cs','Generated_Code_UpgradeReport_Files','Backup','UpgradeLog.XML','UpgradeLog.htm.mdf','.ldf.rdl.data','.bim.layout','.sln.iml','PrecompiledWeb','Simulator','bundle.js']
+
 nnoremap <leader>n :NERDTree %:p:h<CR> 
 nnoremap <leader>a :Ack 
 " Use deoplete.
@@ -165,10 +167,17 @@ vnoremap / /\v
 nnoremap <tab> %
 vnoremap <tab> %
 nnoremap <CR> o<Esc>
+nnoremap j gj
+nnoremap k gk
+vnoremap j gj
+vnoremap k gk
 
 " shortcut to ack
 nnoremap <leader>a :Ack 
 nnoremap <leader>, :%s/，/, /<CR>
+
+" shortcut to edit vimrc
+nnoremap <leader>v :sp<CR>:e ~/dotfiles/init.vim<CR>
 
 colorscheme summerfruit256
 
