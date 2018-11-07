@@ -29,6 +29,7 @@ Plug 'altercation/vim-colors-solarized'
 Plug 'nightsense/simplifysimplify'
 Plug 'rstacruz/sparkup', {'rtp': 'vim/'}
 Plug 'jaxbot/browserlink.vim'
+Plug 'posva/vim-vue'
 
 " Initialize plugin system
 call plug#end()
@@ -42,9 +43,9 @@ let mapleader = ","
 
 set modelines=0
 
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
 set expandtab
 
 " Use system default setting to display chinese
@@ -74,7 +75,7 @@ set wrap
 set textwidth=79
 set formatoptions=qrn1
 if has("nvim")
-    set listchars=tab:▸\ ,eol:¬
+    set listchars=tab:�\ ,eol:¬
 endif
 
 set foldmethod=syntax
@@ -110,10 +111,14 @@ let g:auto_save = 1 " AutoSave is disabled by default, this will enable AutoSave
 let g:auto_save_no_updatetime = 1
 
 " vim-slime
-"let g:slime_target = "tmux"
-"let g:slime_paste_file = "$HOME/.slime_paste"
-"let g:slime_default_config = {"socket_name": "default", "target_pane": "1"}
-"let g:slime_dont_ask_default = 1
+if has('win32')
+    let g:slime_target = "conemu"
+else
+    let g:slime_target = "tmux"
+    let g:slime_paste_file = "$HOME/.slime_paste"
+    let g:slime_default_config = {"socket_name": "default", "target_pane": "1"}
+    let g:slime_dont_ask_default = 1
+endif
 
 " browserlink
 let g:bl_pagefiletype = ['html', 'javascript', 'php', 'markdown']
@@ -183,11 +188,11 @@ inoremap <A-l> <C-o>l
 
 " shortcut to ack
 nnoremap <leader>a :Ack 
-nnoremap <leader>, :%s/，/, /<CR>
+nnoremap <leader>, :%s/�, /<CR>
 
 " shortcut to edit vimrc
 nnoremap <leader>v :sp<CR>:e ~/dotfiles/init.vim<CR>
-
+autocmd BufRead,BufNewFile *.vue setlocal filetype=vue
 colorscheme summerfruit256
 
 if has("gui_running")
