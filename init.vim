@@ -11,6 +11,8 @@ endif
 
 " Make sure you use single quotes
 Plug 'AJua/todo.txt-vim'
+Plug 'leafgarland/typescript-vim'
+Plug 'posva/vim-vue'
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-surround'
@@ -19,6 +21,7 @@ Plug 'kassio/neoterm'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug '907th/vim-auto-save'
 Plug 'jpalardy/vim-slime'
+Plug 'PProvost/vim-ps1'
 "Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 "Plug 'zchee/deoplete-clang'
 Plug 'AJua/summerfruit256.vim'
@@ -107,10 +110,10 @@ let g:auto_save = 1 " AutoSave is disabled by default, this will enable AutoSave
 let g:auto_save_no_updatetime = 1
 
 " vim-slime
-let g:slime_target = "tmux"
-let g:slime_paste_file = "$HOME/.slime_paste"
-let g:slime_default_config = {"socket_name": "default", "target_pane": "1"}
-let g:slime_dont_ask_default = 1
+"let g:slime_target = "tmux"
+"let g:slime_paste_file = "$HOME/.slime_paste"
+"let g:slime_default_config = {"socket_name": "default", "target_pane": "1"}
+"let g:slime_dont_ask_default = 1
 
 " browserlink
 let g:bl_pagefiletype = ['html', 'javascript', 'php', 'markdown']
@@ -172,6 +175,12 @@ nnoremap k gk
 vnoremap j gj
 vnoremap k gk
 
+" provide hjkl movements in Insert mode via the <Alt> modifier key
+inoremap <A-h> <C-o>h
+inoremap <A-j> <C-o>j
+inoremap <A-k> <C-o>k
+inoremap <A-l> <C-o>l
+
 " shortcut to ack
 nnoremap <leader>a :Ack 
 nnoremap <leader>, :%s/，/, /<CR>
@@ -183,7 +192,8 @@ colorscheme summerfruit256
 
 if has("gui_running")
     "set guifont=Inconsolata:h14.4:cANSI:qDRAFT
-    set guifont=ProFontWindows:h17:cANSI:qDRAFT
+    set guifont=ProFontWindows_NF:h16:cANSI:qDRAFT
+    "set guifont=ProFontIIx_NF:h12:cANSI:qDRAFT
 	set lines=53 columns=122 linespace=0
 endif
 
