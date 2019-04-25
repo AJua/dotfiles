@@ -196,8 +196,8 @@ autocmd BufRead,BufNewFile *.vue setlocal filetype=vue
 colorscheme summerfruit256
 
 if has("gui_running")
-    "set guifont=Inconsolata:h14.4:cANSI:qDRAFT
-    set guifont=ProFontWindows_NF:h16:cANSI:qDRAFT
+    set guifont=Inconsolata:h14.4:cANSI:qDRAFT
+    "set guifont=ProFontWindows_NF:h16:cANSI:qDRAFT
     "set guifont=ProFontIIx_NF:h12:cANSI:qDRAFT
 	set lines=53 columns=122 linespace=0
 endif
