@@ -2,7 +2,7 @@
 
 # git config
 unlink ~/.gitconfig
-ln -s ~/dotfiles/gitconfig ~/.gitconfig
+ln -s ~/dotfiles/.gitconfig ~/.gitconfig
 unlink ~/.gitconfig_global
 ln -s ~/dotfiles/.gitignore_global ~/.gitconfig_global
 
