@@ -1,12 +1,16 @@
 #!/bin/bash
 
 # git config
-ln -s ./.gitconfig ~/.gitconfig
-ln -s ./.gitignore_global ~/.gitconfig_global
+unlink ~/.gitconfig
+ln -s ~/dotfiles/gitconfig ~/.gitconfig
+unlink ~/.gitconfig_global
+ln -s ~/dotfiles/.gitignore_global ~/.gitconfig_global
 
 # tmux config
-ln -s ./.tmux.conf ~/.tmux.conf
+unlink ~/.tmux.conf
+ln -s ~/dotfiles/.tmux.conf ~/.tmux.conf
 
 # neovim config
 mkdir -p ~/.config/nvim
-ln -s ./init.vim ~/.config/nvim/init.vim
+unlink ~/.config/nvim/init.vim
+ln -s ~/dotfiles/init.vim ~/.config/nvim/init.vim
