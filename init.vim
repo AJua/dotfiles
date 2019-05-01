@@ -1,4 +1,6 @@
 set nocompatible
+filetype plugin on
+syntax on
 
 " Specify a directory for plugins
 " - For Neovim: ~/.local/share/nvim/plugged
@@ -30,6 +32,7 @@ Plug 'nightsense/simplifysimplify'
 Plug 'rstacruz/sparkup', {'rtp': 'vim/'}
 Plug 'jaxbot/browserlink.vim'
 Plug 'posva/vim-vue'
+Plug 'vimwiki/vimwiki'
 
 " Initialize plugin system
 call plug#end()
@@ -186,7 +189,9 @@ inoremap <A-j> <C-o>j
 inoremap <A-k> <C-o>k
 inoremap <A-l> <C-o>l
 
+
 " shortcut to ack
+"
 nnoremap <leader>a :Ack 
 nnoremap <leader>, :%s/ï¼, /<CR>
 
