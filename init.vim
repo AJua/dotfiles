@@ -22,8 +22,8 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug '907th/vim-auto-save'
 Plug 'jpalardy/vim-slime'
 Plug 'PProvost/vim-ps1'
-"Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-"Plug 'zchee/deoplete-clang'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'zchee/deoplete-clang'
 Plug 'AJua/summerfruit256.vim'
 Plug 'altercation/vim-colors-solarized'
 Plug 'nightsense/simplifysimplify'
@@ -35,17 +35,17 @@ Plug 'posva/vim-vue'
 call plug#end()
 
 " enable python support
-let g:python2_host_prog = '/usr/local/bin/python2'
-let g:python3_host_prog = '/usr/local/bin/python3'
+let g:python_host_prog = '/Users/ajua/.pyenv/versions/neovim2/bin/python'
+let g:python3_host_prog = '/Users/ajua/.pyenv/versions/neovim3/bin/python'
 
 " leader key
 let mapleader = ","
 
 set modelines=0
 
-set tabstop=2
-set shiftwidth=2
-set softtabstop=2
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
 set expandtab
 
 " Use system default setting to display chinese
@@ -75,7 +75,7 @@ set wrap
 set textwidth=79
 set formatoptions=qrn1
 if has("nvim")
-    set listchars=tab:¸\ ,eol:Â¬
+    "set listchars=tab:¿\ ,eol:¬
 endif
 
 set foldmethod=syntax
@@ -199,7 +199,7 @@ if has("gui_running")
     set guifont=Inconsolata:h14.4:cANSI:qDRAFT
     "set guifont=ProFontWindows_NF:h16:cANSI:qDRAFT
     "set guifont=ProFontIIx_NF:h12:cANSI:qDRAFT
-	set lines=53 columns=122 linespace=0
+    set lines=53 columns=122 linespace=0
 endif
 
 " auto save
