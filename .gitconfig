@@ -3,6 +3,12 @@
   email = ljredracess@gmail.com
 [core]
   excludesfile = ~/.gitignore_global
+[diff]
+    tool = meld
+[difftool]
+    prompt = false
+[difftool "meld"]
+    cmd = meld "$LOCAL" "$REMOTE"
 [alias]
   co = checkout
   br = branch
