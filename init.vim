@@ -24,7 +24,7 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug '907th/vim-auto-save'
 Plug 'jpalardy/vim-slime'
 Plug 'PProvost/vim-ps1'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+"Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'zchee/deoplete-clang'
 Plug 'AJua/summerfruit256.vim'
 Plug 'altercation/vim-colors-solarized'
@@ -33,13 +33,14 @@ Plug 'rstacruz/sparkup', {'rtp': 'vim/'}
 Plug 'jaxbot/browserlink.vim'
 Plug 'posva/vim-vue'
 Plug 'vimwiki/vimwiki'
+Plug 'mattn/calendar-vim'
 
 " Initialize plugin system
 call plug#end()
-
 " enable python support
 let g:python_host_prog = '/Users/ajua/.pyenv/versions/neovim2/bin/python'
 let g:python3_host_prog = '/Users/ajua/.pyenv/versions/neovim3/bin/python'
+
 
 " leader key
 let mapleader = ","
@@ -177,7 +178,7 @@ nnoremap / /\v
 vnoremap / /\v
 nnoremap <tab> %
 vnoremap <tab> %
-nnoremap <CR> o<Esc>
+nnoremap <cr> o<ESC>
 nnoremap j gj
 nnoremap k gk
 vnoremap j gj
@@ -198,7 +199,7 @@ nnoremap <leader>, :%s/ï¼, /<CR>
 " shortcut to edit vimrc
 nnoremap <leader>v :sp<CR>:e ~/dotfiles/init.vim<CR>
 autocmd BufRead,BufNewFile *.vue setlocal filetype=vue
-colorscheme summerfruit256
+"colorscheme summerfruit256
 
 if has("gui_running")
     set guifont=Inconsolata:h14.4:cANSI:qDRAFT
