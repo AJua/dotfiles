@@ -12,6 +12,8 @@ if has("nvim")
 endif
 
 " Make sure you use single quotes
+Plug 'github/copilot.vim'
+Plug 'chrisbra/Colorizer'
 Plug 'AJua/todo.txt-vim'
 Plug 'leafgarland/typescript-vim'
 Plug 'posva/vim-vue'
@@ -38,9 +40,8 @@ Plug 'mattn/calendar-vim'
 " Initialize plugin system
 call plug#end()
 " enable python support
-let g:python_host_prog = '/Users/ajua/.pyenv/versions/neovim2/bin/python'
-let g:python3_host_prog = '/Users/ajua/.pyenv/versions/neovim3/bin/python'
-
+let g:python_host_prog = '/opt/local/bin/python2.7'
+let g:python3_host_prog = '/opt/local/bin/python3.10'
 
 " leader key
 let mapleader = ","
@@ -125,10 +126,10 @@ else
 endif
 
 " browserlink
-let g:bl_pagefiletype = ['html', 'javascript', 'php', 'markdown']
+" let g:bl_pagefiletype = ['html', 'javascript', 'php', 'markdown']
 
 " json beautifier
-nnoremap <Leader>j :%!python -m json.tool<CR>
+nnoremap <Leader>j :%!jq .<CR>
 
 " hide search highlight
 nnoremap <leader><space> :noh<CR>
@@ -165,12 +166,6 @@ nnoremap <leader>l :set list!<CR>
 
 " personal hotkey preference
 inoremap jj <ESC>
-inoremap {<CR> {<CR>}<ESC>O<TAB>
-inoremap (( ()<LEFT>
-inoremap {{ {}<LEFT>
-inoremap [[ []<LEFT>
-inoremap '' ''<LEFT>
-inoremap "" ""<LEFT>
 
 nnoremap ; :
 vnoremap ; :
@@ -178,7 +173,7 @@ nnoremap / /\v
 vnoremap / /\v
 nnoremap <tab> %
 vnoremap <tab> %
-nnoremap <cr> o<ESC>
+"nnoremap <cr> o<ESC>
 nnoremap j gj
 nnoremap k gk
 vnoremap j gj
