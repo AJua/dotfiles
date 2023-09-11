@@ -9,6 +9,8 @@ ln -s ~/dotfiles/.gitignore_global ~/.gitconfig_global
 # tmux config
 unlink ~/.tmux.conf
 ln -s ~/dotfiles/.tmux.conf ~/.tmux.conf
+unlink ~/tmux.sh
+ln -s ~/dotfiles/tmux.sh ~/tmux.sh
 
 # neovim config
 mkdir -p ~/.config/nvim

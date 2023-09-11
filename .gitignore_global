@@ -1,2 +1,4 @@
 *.un~
 *.swp
+ios/Runner.xcodeproj/project.pbxproj
+ios/Flutter/AppFrameworkInfo.plist
