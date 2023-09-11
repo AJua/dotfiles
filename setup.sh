@@ -16,3 +16,6 @@ ln -s ~/dotfiles/tmux.sh ~/tmux.sh
 mkdir -p ~/.config/nvim
 unlink ~/.config/nvim/init.vim
 ln -s ~/dotfiles/init.vim ~/.config/nvim/init.vim
+
+#setup vimwiki
+ln -s ~/Library/Mobile\ Documents/com~apple~CloudDocs/vimwiki ~/vimwiki
