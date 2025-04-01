@@ -133,6 +133,9 @@ else
     let g:slime_dont_ask_default = 1
 endif
 
+" inseat date to be hugo parsable
+inoremap <Leader>t <C-R>=strftime("%Y-%m-%d %H:%M:%S")<CR>
+
 " browserlink
 " let g:bl_pagefiletype = ['html', 'javascript', 'php', 'markdown']
 
