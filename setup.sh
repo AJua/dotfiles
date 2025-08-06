@@ -18,4 +18,5 @@ unlink ~/.config/nvim/init.vim
 ln -s ~/dotfiles/init.vim ~/.config/nvim/init.vim
 
 #setup vimwiki
-ln -s ~/Library/Mobile\ Documents/com~apple~CloudDocs/vimwiki ~/vimwiki
+#ln -s ~/Library/Mobile\ Documents/com~apple~CloudDocs/vimwiki ~/vimwiki
+ln -s ~/Syncthing/vimwiki ~/vimwiki

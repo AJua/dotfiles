@@ -67,7 +67,6 @@ set visualbell
 set cursorline
 set ruler
 set backspace=indent,eol,start
-set laststatus=2
 set number relativenumber
 set undofile
 
@@ -118,6 +117,8 @@ let g:deoplete#sources#clang#clang_header = "/usr/local/Cellar/llvm/5.0.0/lib/cl
 " vim-ale
 let g:ale_fixers = { 'python': ['autopep8'], }
 let g:ale_fix_on_save = 1
+nnoremap <F12> :ALEGoToDefinition<CR>
+nnoremap <S-F12> :ALEFindReferences<CR>
 
 " vim-autosave
 let g:auto_save = 1 " AutoSave is disabled by default, this will enable AutoSave onVim startup
@@ -329,3 +330,39 @@ let g:mkdp_filetypes = ['markdown']
 let g:mkdp_theme = 'light'
 
 au BufNewFile */vimwiki/diary/*.md :silent 0r !~/dotfiles/generate-vimwiki-diary-template '%'
+
+set laststatus=2  " Always show status line
+
+" Function to get buffer list
+function! BuffersList()
+  let buffers = []
+  for i in range(1, bufnr('$'))
+    if buflisted(i) && bufexists(i)
+      let name = bufname(i)
+      if empty(name)
+        let name = '[No Name]'
+      else
+        let name = fnamemodify(name, ':t')  " Just filename, not full path
+      endif
+      
+      " Add buffer number and mark current buffer
+      if i == bufnr('%')
+        call add(buffers, '[' . i . ':' . name . ']')
+      else
+        call add(buffers, i . ':' . name)
+      endif
+    endif
+  endfor
+  return join(buffers, ' ')
+endfunction
+
+" Set the statusline to show buffers
+set statusline=%{BuffersList()}\ %=%l,%c\ %p%%
+
+nnoremap <C-PageDown> :bnext<CR>
+nnoremap <C-PageUp> :bprevious<CR>
+nnoremap <leader>1 :b1<CR>
+nnoremap <leader>2 :b2<CR>
+nnoremap <leader>3 :b3<CR>
+nnoremap <leader>4 :b4<CR>
+" etc...
