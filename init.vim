@@ -45,6 +45,10 @@ call plug#end()
 let g:python_host_prog = '/opt/local/bin/python2.7'
 let g:python3_host_prog = '/opt/local/bin/python3.10'
 
+" Disable unnecessary providers to avoid health check warnings
+let g:loaded_ruby_provider = 0
+let g:loaded_perl_provider = 0
+
 " leader key
 let mapleader = ","
 
@@ -81,7 +85,7 @@ set wrap
 set textwidth=79
 set formatoptions=qrn1
 if has("nvim")
-    "set listchars=tab:¿\ ,eol:¬
+    "set listchars=tab:ï¿½\ ,eol:ï¿½
 endif
 
 set foldmethod=syntax
@@ -201,12 +205,12 @@ inoremap <A-l> <C-o>l
 " shortcut to ack
 "
 nnoremap <leader>a :Ack 
-nnoremap <leader>, :%s/ï¼, /<CR>
+nnoremap <leader>, :%s/ï¿½, /<CR>
 
 " shortcut to edit vimrc
 nnoremap <leader>v :sp<CR>:e ~/dotfiles/init.vim<CR>
 autocmd BufRead,BufNewFile *.vue setlocal filetype=vue
-colorscheme summerfruit256
+"colorscheme summerfruit256
 
 if has("gui_running")
     set guifont=Inconsolata:h14.4:cANSI:qDRAFT
