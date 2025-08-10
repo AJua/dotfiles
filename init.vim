@@ -38,6 +38,7 @@ Plug 'vimwiki/vimwiki'
 Plug 'mattn/calendar-vim'
 Plug 'mracos/mermaid.vim'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
+Plug 'nordtheme/vim'
 
 " Initialize plugin system
 call plug#end()
@@ -211,6 +212,7 @@ nnoremap <leader>, :%s/�, /<CR>
 nnoremap <leader>v :sp<CR>:e ~/dotfiles/init.vim<CR>
 autocmd BufRead,BufNewFile *.vue setlocal filetype=vue
 "colorscheme summerfruit256
+colorscheme nord
 
 if has("gui_running")
     set guifont=Inconsolata:h14.4:cANSI:qDRAFT
