@@ -105,11 +105,29 @@ let xml_syntax_folding=1      " XML
 
 let NERDTreeIgnore=['png', 'build','sound','images','Assets','aspnet_client','min.js','min.css','.map','.suo','.user','.userosscache','.sln.docstates.userprefsebug','debug','release','releases','x64','x86','.dll','DLL','[Bb]in','TestResult','dlldata.cproject.lock.json','artifacts_i.c','_p.c','_i.h','.ilk','.meta','obj','.pch','.pdb','.pgc','.pgd','.rsp','.sbr','.tlb','.tli','.tlh','.tmp','.tmp_proj','.vspscc','.vssscc','.builds','.pidb','.svclog','.scc_Chutzpahipch','.aps','.ncb','.opendb','.opensdf','.sdf','.cachefile','.VC.db','.VC.opendb.psess','.vsp','.vspx','.reharper','.DotSettings.user.JustCode_TeamCity.dotCover_NCrunch_','.crunch.local.xml','nCrunchTemp_.mm.','AutoTest.Net.sass-cachexpressDocProjectbuildhelp','DocProjectHelp.HxT','DocProjectHelp.HxC','DocProjectHelp.hhc','DocProjectHelp.hhk','DocProjectHelp.hhp','DocProjectHelpHtml2','DocProjectHelphtmlpublish.ublish.xml','.azurePubxml','.pubxml','.publishprojPublishScripts.nupkg','packages','packagesbuild','.nuget.props','.nuget.targetscsx','.build.csdefecf','rcfAppPackages','BundleArtifacts','Package.StoreAssociation.xml','_pkginfo.txt.ache','.acheClientBin','.dbmdl','.dbproj.schemaview','.pfx','.publishsettings','node_modules','orleans.codegen.cs','Generated_Code_UpgradeReport_Files','Backup','UpgradeLog.XML','UpgradeLog.htm.mdf','.ldf.rdl.data','.bim.layout','.sln.iml','PrecompiledWeb','Simulator','bundle.js']
 
-let g:vimwiki_list = [{'path': '~/vimwiki', 'template_path': '~/vimwiki/templates/',
-          \ 'template_default': 'default', 'syntax': 'markdown', 'ext': '.md',
-          \ 'path_html': '~/vimwiki/site_html/', 'custom_wiki2html': 'vimwiki_markdown',
-          \ 'html_filename_parameterization': 1,
-          \ 'template_ext': '.tpl'}]
+let g:vimwiki_list = [
+            \ {
+            \ 'path': '~/vimwiki', 
+            \ 'template_path': '~/vimwiki/templates/',
+            \ 'template_default': 'default', 
+            \ 'syntax': 'markdown', 'ext': '.md',
+            \ 'path_html': '~/vimwiki/site_html/', 
+            \ 'custom_wiki2html': 'vimwiki_markdown',
+            \ 'html_filename_parameterization': 1,
+            \ 'template_ext': '.tpl'
+            \ },
+            \ {
+            \ 'path': '~/vimwiki', 
+            \ 'template_path': '~/vimwiki/templates/',
+            \ 'template_default': 'default', 
+            \ 'syntax': 'markdown', 'ext': '.md',
+            \ 'path_html': '~/vimwiki/site_html/', 
+            \ 'custom_wiki2html': 'vimwiki_markdown',
+            \ 'html_filename_parameterization': 1,
+            \ 'template_ext': '.tpl',
+            \ 'index': 'work',
+            \ }
+            \ ]
 
 nnoremap <leader>n :NERDTree %:p:h<CR> 
 nnoremap <leader>a :Ack 
@@ -126,6 +144,9 @@ let g:ale_fixers = { 'python': ['autopep8'], }
 let g:ale_fix_on_save = 1
 nnoremap <F12> :ALEGoToDefinition<CR>
 nnoremap <S-F12> :ALEFindReferences<CR>
+
+nnoremap <leader>ll :VimwikiIndex 1<CR>
+nnoremap <leader>ww :VimwikiIndex 2<CR>
 
 " vim-autosave
 let g:auto_save = 1 " AutoSave is disabled by default, this will enable AutoSave onVim startup
@@ -240,7 +261,7 @@ endif
 "
 " set to 1, nvim will open the preview window after entering the markdown buffer
 " default: 0
-let g:mkdp_auto_start = 1
+let g:mkdp_auto_start = 0
 
 " set to 1, the nvim will auto close current preview window when change
 " from markdown buffer to another buffer
@@ -300,19 +321,19 @@ let g:mkdp_browserfunc = ''
 " content_editable: if enable content editable for preview page, default: v:false
 " disable_filename: if disable filename header for preview page, default: 0
 let g:mkdp_preview_options = {
-    \ 'mkit': {},
-    \ 'katex': {},
-    \ 'uml': {},
-    \ 'maid': {},
-    \ 'disable_sync_scroll': 0,
-    \ 'sync_scroll_type': 'middle',
-    \ 'hide_yaml_meta': 1,
-    \ 'sequence_diagrams': {},
-    \ 'flowchart_diagrams': {},
-    \ 'content_editable': v:false,
-    \ 'disable_filename': 0,
-    \ 'toc': {}
-    \ }
+            \ 'mkit': {},
+            \ 'katex': {},
+            \ 'uml': {},
+            \ 'maid': {},
+            \ 'disable_sync_scroll': 0,
+            \ 'sync_scroll_type': 'middle',
+            \ 'hide_yaml_meta': 1,
+            \ 'sequence_diagrams': {},
+            \ 'flowchart_diagrams': {},
+            \ 'content_editable': v:false,
+            \ 'disable_filename': 0,
+            \ 'toc': {}
+            \ }
 
 " use a custom markdown style must be absolute path
 " like '/Users/username/markdown.css' or expand('~/markdown.css')
@@ -343,25 +364,25 @@ set laststatus=2  " Always show status line
 
 " Function to get buffer list
 function! BuffersList()
-  let buffers = []
-  for i in range(1, bufnr('$'))
-    if buflisted(i) && bufexists(i)
-      let name = bufname(i)
-      if empty(name)
-        let name = '[No Name]'
-      else
-        let name = fnamemodify(name, ':t')  " Just filename, not full path
-      endif
-      
-      " Add buffer number and mark current buffer
-      if i == bufnr('%')
-        call add(buffers, '[' . i . ':' . name . ']')
-      else
-        call add(buffers, i . ':' . name)
-      endif
-    endif
-  endfor
-  return join(buffers, ' ')
+    let buffers = []
+    for i in range(1, bufnr('$'))
+        if buflisted(i) && bufexists(i)
+            let name = bufname(i)
+            if empty(name)
+                let name = '[No Name]'
+            else
+                let name = fnamemodify(name, ':t')  " Just filename, not full path
+            endif
+
+            " Add buffer number and mark current buffer
+            if i == bufnr('%')
+                call add(buffers, '[' . i . ':' . name . ']')
+            else
+                call add(buffers, i . ':' . name)
+            endif
+        endif
+    endfor
+    return join(buffers, ' ')
 endfunction
 
 " Set the statusline to show buffers
