@@ -39,6 +39,7 @@ Plug 'mracos/mermaid.vim'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 Plug 'nordtheme/vim'
 Plug 'dart-lang/dart-vim-plugin'
+Plug 'ledger/vim-ledger'
 
 " Initialize plugin system
 call plug#end()
@@ -360,6 +361,13 @@ let g:mkdp_theme = 'light'
 
 au BufNewFile */vimwiki/diary/*.md :silent 0r !~/dotfiles/generate-vimwiki-diary-template '%'
 
+" In your .vimrc or init.vim
+autocmd FileType ledger inoremap <silent> <Tab> <C-r>=ledger#autocomplete_and_align()<CR>
+autocmd FileType ledger vnoremap <silent> <Tab> :LedgerAlign<CR>
+
+" Quick date insertion
+autocmd FileType ledger inoremap <silent> <C-d> <C-r>=strftime('%Y-%m-%d')<CR>
+
 set laststatus=2  " Always show status line
 
 " Function to get buffer list
@@ -386,7 +394,7 @@ function! BuffersList()
 endfunction
 
 " Set the statusline to show buffers
-set statusline=%{BuffersList()}\ %=%l,%c\ %p%%
+set statusline=%{BuffersList()}\ %=%l,%c\ %p%%%y
 
 nnoremap <C-PageDown> :bnext<CR>
 nnoremap <C-PageUp> :bprevious<CR>
