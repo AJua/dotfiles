@@ -8,7 +8,6 @@ syntax on
 call plug#begin('~/.local/share/nvim/plugged')
 
 if has("nvim")
-    "Plug 'w0rp/ale'
     Plug 'dense-analysis/ale'
 endif
 
@@ -28,8 +27,6 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug '907th/vim-auto-save'
 Plug 'jpalardy/vim-slime'
 Plug 'PProvost/vim-ps1'
-"Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'zchee/deoplete-clang'
 Plug 'AJua/summerfruit256.vim'
 Plug 'altercation/vim-colors-solarized'
 Plug 'nightsense/simplifysimplify'
@@ -41,6 +38,7 @@ Plug 'mattn/calendar-vim'
 Plug 'mracos/mermaid.vim'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 Plug 'nordtheme/vim'
+Plug 'dart-lang/dart-vim-plugin'
 
 " Initialize plugin system
 call plug#end()
@@ -103,7 +101,10 @@ let sh_fold_enabled=1         " sh
 let vimsyn_folding='af'       " Vim script
 let xml_syntax_folding=1      " XML
 
-let NERDTreeIgnore=['png', 'build','sound','images','Assets','aspnet_client','min.js','min.css','.map','.suo','.user','.userosscache','.sln.docstates.userprefsebug','debug','release','releases','x64','x86','.dll','DLL','[Bb]in','TestResult','dlldata.cproject.lock.json','artifacts_i.c','_p.c','_i.h','.ilk','.meta','obj','.pch','.pdb','.pgc','.pgd','.rsp','.sbr','.tlb','.tli','.tlh','.tmp','.tmp_proj','.vspscc','.vssscc','.builds','.pidb','.svclog','.scc_Chutzpahipch','.aps','.ncb','.opendb','.opensdf','.sdf','.cachefile','.VC.db','.VC.opendb.psess','.vsp','.vspx','.reharper','.DotSettings.user.JustCode_TeamCity.dotCover_NCrunch_','.crunch.local.xml','nCrunchTemp_.mm.','AutoTest.Net.sass-cachexpressDocProjectbuildhelp','DocProjectHelp.HxT','DocProjectHelp.HxC','DocProjectHelp.hhc','DocProjectHelp.hhk','DocProjectHelp.hhp','DocProjectHelpHtml2','DocProjectHelphtmlpublish.ublish.xml','.azurePubxml','.pubxml','.publishprojPublishScripts.nupkg','packages','packagesbuild','.nuget.props','.nuget.targetscsx','.build.csdefecf','rcfAppPackages','BundleArtifacts','Package.StoreAssociation.xml','_pkginfo.txt.ache','.acheClientBin','.dbmdl','.dbproj.schemaview','.pfx','.publishsettings','node_modules','orleans.codegen.cs','Generated_Code_UpgradeReport_Files','Backup','UpgradeLog.XML','UpgradeLog.htm.mdf','.ldf.rdl.data','.bim.layout','.sln.iml','PrecompiledWeb','Simulator','bundle.js']
+" Deletes the current buffer without closing the window
+command! BD bnext | bdelete #
+let g:NERDTreeQuitOnLastWindow = 1
+let NERDTreeIgnore=['png', 'build','sound','images','Assets','aspnet_client','min.js','min.css','.map','.suo','.user','.userosscache','.sln.docstates.userprefsebug','debug','release','releases','x64','x86','.dll','DLL','[Bb]in','TestResult','dlldata.cproject.lock.json','artifacts_i.c','_p.c','_i.h','.ilk','.meta','obj','.pch','.pdb','.pgc','.pgd','.rsp','.sbr','.tlb','.tli','.tlh','.tmp','.tmp_proj','.vspscc','.vssscc','.builds','.pidb','.svclog','.scc_Chutzpahipch','.aps','.ncb','.opendb','.opensdf','.sdf','.cachefile','.VC.db','.VC.opendb.psess','.vsp','.vspx','.reharper','.DotSettings.user.JustCode_TeamCity.dotCover_NCrunch_','.crunch.local.xml','nCrunchTemp_.mm.','AutoTest.Net.sass-cachexpressDocProjectbuildhelp','DocProjectHelp.HxT','DocProjectHelp.HxC','DocProjectHelp.hhc','DocProjectHelp.hhk','DocProjectHelp.hhp','DocProjectHelpHtml2','DocProjectHelphtmlpublish.ublish.xml','.azurePubxml','.pubxml','.publishprojPublishScripts.nupkg','packagesbuild','.nuget.props','.nuget.targetscsx','.build.csdefecf','rcfAppPackages','BundleArtifacts','Package.StoreAssociation.xml','_pkginfo.txt.ache','.acheClientBin','.dbmdl','.dbproj.schemaview','.pfx','.publishsettings','node_modules','orleans.codegen.cs','Generated_Code_UpgradeReport_Files','Backup','UpgradeLog.XML','UpgradeLog.htm.mdf','.ldf.rdl.data','.bim.layout','.sln.iml','PrecompiledWeb','Simulator','bundle.js']
 
 let g:vimwiki_list = [
             \ {
@@ -131,18 +132,14 @@ let g:vimwiki_list = [
 
 nnoremap <leader>n :NERDTree %:p:h<CR> 
 nnoremap <leader>a :Ack 
-" Use deoplete.
-let g:deoplete#enable_at_startup = 1
-
-" let Plug 'zchee/deoplete-clang' work correcly
-" execute `mdfind -name libclang.dylib` within bash on mac to find the location
-let g:deoplete#sources#clang#libclang_path = "/usr/local/Cellar/llvm/5.0.0/lib/libclang.dylib"
-let g:deoplete#sources#clang#clang_header = "/usr/local/Cellar/llvm/5.0.0/lib/clang"
 
 " vim-ale
 let g:ale_fixers = { 'python': ['autopep8'], }
 let g:ale_fix_on_save = 1
+let g:ale_dart_language_server_executable = 'dart'
+
 nnoremap <F12> :ALEGoToDefinition<CR>
+nnoremap <F22> :ALEFindReferences<CR>
 nnoremap <S-F12> :ALEFindReferences<CR>
 
 nnoremap <leader>ll :VimwikiIndex 1<CR>
@@ -234,6 +231,9 @@ nnoremap <leader>, :%s/�, /<CR>
 " shortcut to edit vimrc
 nnoremap <leader>v :sp<CR>:e ~/dotfiles/init.vim<CR>
 autocmd BufRead,BufNewFile *.vue setlocal filetype=vue
+
+" Use this line for syntax-based folding (recommended)
+autocmd FileType dart setlocal foldmethod=syntax
 "colorscheme summerfruit256
 colorscheme nord
 
