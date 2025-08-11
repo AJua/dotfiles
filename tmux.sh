@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Set Session Name
-SESSION="Website"
+SESSION="tmux"
 SESSIONEXISTS=$(tmux list-sessions | grep $SESSION)
 
 # Only create tmux session if it doesn't already exist
@@ -11,13 +11,14 @@ then
     tmux new-session -d -s $SESSION
 
     # Name first Pane and start zsh
-    tmux rename-window -t 0 'vimwiki'
-    tmux send-keys -t 'vimwiki' 'vim' C-m 
-    tmux send-keys -t 'vimwiki' ',ww' C-m 
+    tmux rename-window -t 0 'life'
+    tmux send-keys -t 'life' 'vim' C-m 
+    tmux send-keys -t 'life' ',ll' C-m 
 
     # Create and setup pane for hugo server
-    tmux new-window -t $SESSION:1 -n 'appium'
-    tmux send-keys -t 'appium' 'appium' C-m # Switch to bind script?
+    tmux new-window -t $SESSION:1 -n 'work'
+    tmux send-keys -t 'work' 'vim' C-m 
+    tmux send-keys -t 'work' ',ww' C-m 
 
     # setup Writing window
     tmux new-window -t $SESSION:2 -n 'scrcpy'
