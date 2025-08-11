@@ -8,11 +8,13 @@ syntax on
 call plug#begin('~/.local/share/nvim/plugged')
 
 if has("nvim")
-    Plug 'w0rp/ale'
+    "Plug 'w0rp/ale'
+    Plug 'dense-analysis/ale'
 endif
 
 " Make sure you use single quotes
 "Plug 'github/copilot.vim'
+Plug 'OmniSharp/omnisharp-vim'
 Plug 'chrisbra/Colorizer'
 Plug 'AJua/todo.txt-vim'
 Plug 'leafgarland/typescript-vim'
