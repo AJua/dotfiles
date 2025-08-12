@@ -361,11 +361,10 @@ let g:mkdp_theme = 'light'
 
 au BufNewFile */vimwiki/diary/*.md :silent 0r !~/dotfiles/generate-vimwiki-diary-template '%'
 
-" In your .vimrc or init.vim
+let g:ledger_fuzzy_account_completion = 1
+let g:ledger_extra_options = '--pedantic --explicit --check-payees'
 autocmd FileType ledger inoremap <silent> <Tab> <C-r>=ledger#autocomplete_and_align()<CR>
 autocmd FileType ledger vnoremap <silent> <Tab> :LedgerAlign<CR>
-
-" Quick date insertion
 autocmd FileType ledger inoremap <silent> <C-d> <C-r>=strftime('%Y-%m-%d')<CR>
 
 set laststatus=2  " Always show status line
