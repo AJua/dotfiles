@@ -55,7 +55,7 @@ let g:loaded_perl_provider = 0
 let mapleader = ","
 
 set modelines=0
-
+set autoread
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
@@ -107,6 +107,8 @@ command! BD bnext | bdelete #
 let g:NERDTreeQuitOnLastWindow = 1
 let NERDTreeIgnore=['png', 'build','sound','images','Assets','aspnet_client','min.js','min.css','.map','.suo','.user','.userosscache','.sln.docstates.userprefsebug','debug','release','releases','x64','x86','.dll','DLL','[Bb]in','TestResult','dlldata.cproject.lock.json','artifacts_i.c','_p.c','_i.h','.ilk','.meta','obj','.pch','.pdb','.pgc','.pgd','.rsp','.sbr','.tlb','.tli','.tlh','.tmp','.tmp_proj','.vspscc','.vssscc','.builds','.pidb','.svclog','.scc_Chutzpahipch','.aps','.ncb','.opendb','.opensdf','.sdf','.cachefile','.VC.db','.VC.opendb.psess','.vsp','.vspx','.reharper','.DotSettings.user.JustCode_TeamCity.dotCover_NCrunch_','.crunch.local.xml','nCrunchTemp_.mm.','AutoTest.Net.sass-cachexpressDocProjectbuildhelp','DocProjectHelp.HxT','DocProjectHelp.HxC','DocProjectHelp.hhc','DocProjectHelp.hhk','DocProjectHelp.hhp','DocProjectHelpHtml2','DocProjectHelphtmlpublish.ublish.xml','.azurePubxml','.pubxml','.publishprojPublishScripts.nupkg','packagesbuild','.nuget.props','.nuget.targetscsx','.build.csdefecf','rcfAppPackages','BundleArtifacts','Package.StoreAssociation.xml','_pkginfo.txt.ache','.acheClientBin','.dbmdl','.dbproj.schemaview','.pfx','.publishsettings','node_modules','orleans.codegen.cs','Generated_Code_UpgradeReport_Files','Backup','UpgradeLog.XML','UpgradeLog.htm.mdf','.ldf.rdl.data','.bim.layout','.sln.iml','PrecompiledWeb','Simulator','bundle.js']
 
+" Configure vimwiki to be less aggressive
+let g:vimwiki_global_ext = 0
 let g:vimwiki_list = [
             \ {
             \ 'path': '~/vimwiki', 
@@ -143,8 +145,9 @@ nnoremap <F12> :ALEGoToDefinition<CR>
 nnoremap <F22> :ALEFindReferences<CR>
 nnoremap <S-F12> :ALEFindReferences<CR>
 
-nnoremap <leader>ll :VimwikiIndex 1<CR>
-nnoremap <leader>ww :VimwikiIndex 2<CR>
+nnoremap <leader>ll :e $HOME/vimwiki/ledger.ldg<CR>
+nnoremap <leader>ww :VimwikiIndex 1<CR>
+nnoremap <leader>kk :VimwikiIndex 2<CR>
 
 " vim-autosave
 let g:auto_save = 1 " AutoSave is disabled by default, this will enable AutoSave onVim startup
@@ -361,11 +364,12 @@ let g:mkdp_theme = 'light'
 
 au BufNewFile */vimwiki/diary/*.md :silent 0r !~/dotfiles/generate-vimwiki-diary-template '%'
 
-let g:ledger_fuzzy_account_completion = 1
-let g:ledger_extra_options = '--pedantic --explicit --check-payees'
 autocmd FileType ledger inoremap <silent> <Tab> <C-r>=ledger#autocomplete_and_align()<CR>
 autocmd FileType ledger vnoremap <silent> <Tab> :LedgerAlign<CR>
 autocmd FileType ledger inoremap <silent> <C-d> <C-r>=strftime('%Y-%m-%d')<CR>
+let g:ledger_is_hledger = 1
+let g:ledger_fuzzy_account_completion = 1
+let g:ledger_extra_options = '--pedantic --explicit --check-payees'
 
 set laststatus=2  " Always show status line
 
