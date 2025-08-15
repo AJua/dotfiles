@@ -370,6 +370,16 @@ autocmd FileType ledger inoremap <silent> <C-d> <C-r>=strftime('%Y-%m-%d')<CR>
 let g:ledger_is_hledger = 1
 let g:ledger_fuzzy_account_completion = 1
 let g:ledger_extra_options = '--pedantic --explicit --check-payees'
+let g:ledger_default_commodity = 'NT$'
+
+" Place the commodity symbol after the amount
+let g:ledger_commodity_before = 1
+
+" Remove the space between the amount and the commodity
+let g:ledger_commodity_sep = ''
+
+" Align transactions on the commodity symbol
+let g:ledger_align_commodity = 1
 
 set laststatus=2  " Always show status line
 
