@@ -25,6 +25,7 @@ Plug 'tpope/vim-repeat'
 Plug 'kassio/neoterm'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug '907th/vim-auto-save'
+Plug 'djoshea/vim-autoread'
 Plug 'jpalardy/vim-slime'
 Plug 'PProvost/vim-ps1'
 Plug 'AJua/summerfruit256.vim'
@@ -145,7 +146,7 @@ nnoremap <F12> :ALEGoToDefinition<CR>
 nnoremap <F22> :ALEFindReferences<CR>
 nnoremap <S-F12> :ALEFindReferences<CR>
 
-nnoremap <leader>ll :e $HOME/vimwiki/ledger.ldg<CR>
+nnoremap <leader>ll :e $HOME/Syncthing/ledgers/main.hledger<CR>
 nnoremap <leader>ww :VimwikiIndex 1<CR>
 nnoremap <leader>kk :VimwikiIndex 2<CR>
 
@@ -380,6 +381,7 @@ let g:ledger_commodity_sep = ''
 
 " Align transactions on the commodity symbol
 let g:ledger_align_commodity = 1
+let g:ledger_date_format = '%Y-%m-%d'
 
 set laststatus=2  " Always show status line
 
