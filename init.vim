@@ -239,8 +239,6 @@ autocmd BufRead,BufNewFile *.vue setlocal filetype=vue
 
 " Use this line for syntax-based folding (recommended)
 autocmd FileType dart setlocal foldmethod=syntax
-"colorscheme summerfruit256
-colorscheme nord
 
 if has("gui_running")
     set guifont=Inconsolata:h14.4:cANSI:qDRAFT
@@ -255,12 +253,15 @@ au FocusLost * :wa
 " fix syntax on not working correctly after call vim-plug
 au BufReadPre * syntax on
 
-if has('win32')
+if has('win32') || has('win64')
     set clipboard=unnamed
-else
+elseif has('mac') || has('macunix')
     set clipboard=unnamedplus
+    colorscheme nord
+elseif has('unix')
+    set clipboard=unnamedplus
+    colorscheme summerfruit256
 endif
-
 
 " MarkdownPreview Config:
 "
@@ -365,6 +366,9 @@ let g:mkdp_theme = 'light'
 
 au BufNewFile */vimwiki/diary/*.md :silent 0r !~/dotfiles/generate-vimwiki-diary-template '%'
 
+autocmd FileType ledger setlocal foldmethod=syntax
+autocmd FileType ledger setlocal foldenable
+autocmd FileType ledger setlocal foldlevel=0
 autocmd FileType ledger inoremap <silent> <Tab> <C-r>=ledger#autocomplete_and_align()<CR>
 autocmd FileType ledger vnoremap <silent> <Tab> :LedgerAlign<CR>
 autocmd FileType ledger inoremap <silent> <C-d> <C-r>=strftime('%Y-%m-%d')<CR>
